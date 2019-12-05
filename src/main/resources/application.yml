@@ -5,13 +5,14 @@ spring:
     name: user-service
   datasource:
     url: jdbc:postgresql://${db_url}:5432/postgres
-    username: ${db_user}
-    password: ${db_pass}
+    username: ${DB_USER}
+    password: ${DB_PASS}
     driver-class-name: org.postgresql.Driver
   jpa:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_schema: ${DB_SCHEMA}
     generate-ddl: true
   jackson:
     serialization:
