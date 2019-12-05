@@ -13,5 +13,6 @@ public interface ListingClient {
 	
 	@GetMapping("/listings/user/{userId}")
 	public List<Listing> getListingsByUserId(@PathVariable("userId")int id);
+	
 
 }

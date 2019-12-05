@@ -67,4 +67,11 @@ public class UserController {
 		user.setId(id);
 		return new ResponseEntity<User>(userService.updateUser(user), HttpStatus.OK);
 	}
+	
+	@PostMapping("/{userId}/listing/{listingId}/user/{loggedInId}")
+	public ResponseEntity<HttpStatus> sendNotification(@PathVariable int userId, @PathVariable int listingId, @PathVariable int loggedInId){
+		System.out.println("sending");
+		userService.sendNotification(userId, listingId, loggedInId);
+		return new ResponseEntity<HttpStatus>(HttpStatus.OK);
+	}
 }
