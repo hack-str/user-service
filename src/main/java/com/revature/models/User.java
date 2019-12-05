@@ -1,11 +1,15 @@
 package com.revature.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "users")
@@ -20,9 +24,11 @@ public class User {
 	@OneToOne
 	private Project project;
 	
+	@Transient
+	private List<Listing> listings = new ArrayList<>();
+	
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public User(int id, String email, String password, int phoneNumber, Project project) {
 		super();
@@ -62,12 +68,19 @@ public class User {
 	public void setProject(Project project) {
 		this.project = project;
 	}
+	public List<Listing> getListings() {
+		return listings;
+	}
+	public void setListings(List<Listing> listings) {
+		this.listings = listings;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + id;
+		result = prime * result + ((listings == null) ? 0 : listings.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + phoneNumber;
 		result = prime * result + ((project == null) ? 0 : project.hashCode());
@@ -89,6 +102,11 @@ public class User {
 			return false;
 		if (id != other.id)
 			return false;
+		if (listings == null) {
+			if (other.listings != null)
+				return false;
+		} else if (!listings.equals(other.listings))
+			return false;
 		if (password == null) {
 			if (other.password != null)
 				return false;
@@ -106,8 +124,10 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", password=" + password + ", phoneNumber=" + phoneNumber
-				+ ", project=" + project + "]";
+				+ ", project=" + project + ", listings=" + listings + "]";
 	}
+	
+	
 	
 	
 }
