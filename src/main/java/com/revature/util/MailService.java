@@ -30,8 +30,8 @@ public class MailService {
 	     props.put("mail.debug", "true");
 	     props.put("mail.store.protocol", "pop3");
 	     props.put("mail.transport.protocol", "smtp");
-	     final String username = "couchforce.hackstr@gmail.com";//
-	     final String password = "revcouch1234";
+	     final String username = System.getenv("EMAIL");
+	     final String password = System.getenv("EMAIL_PASS");
 	     try{
 	     Session session = Session.getDefaultInstance(props, 
 	                          new Authenticator(){
