@@ -2,6 +2,8 @@ package com.revature.controllers;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,34 +15,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.models.User;
+import com.revature.services.UserService;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
 
+	@Autowired
+	private UserService userService;
+	
 	@GetMapping
 	public List<User> getAllUsers() {
-
-		return null;
+		return userService.getAllUsers();
 	}
 
 	@GetMapping("/{id}")
 	public User getUserById(@PathVariable("id") int id) {
-		return null;
+		return userService.getUserById(id);
 	}
 
 	@PostMapping
 	public ResponseEntity<User> createUser(@RequestBody User user) {
-		return null;
+		return new ResponseEntity<User>(userService.createUser(user),HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<User> deleteUser(@PathVariable("id") int id){
-		return null;
+	public ResponseEntity<HttpStatus> deleteUser(@PathVariable("id") int id){
+		userService.deleteUser(id);
+		return new ResponseEntity<HttpStatus>(HttpStatus.OK);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<User> updateUser(@RequestBody User user){
-		return null;
+	public ResponseEntity<User> updateUser(@PathVariable int id, @RequestBody User user){
+		user.setId(id);
+		return new ResponseEntity<User>(userService.updateUser(user), HttpStatus.OK);
 	}
 }

@@ -4,9 +4,9 @@ spring:
   application:
     name: user-service
   datasource:
-    url: jdbc:postgresql://35.196.239.229:5432/postgres
+    url: jdbc:postgresql://${PostgresURL}:5432/postgres
     username: postgres
-    password: p4ssw0rd
+    password: ${PostgresPW}
     driver-class-name: org.postgresql.Driver
   jpa:
     properties:

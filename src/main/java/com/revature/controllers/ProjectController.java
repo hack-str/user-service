@@ -41,11 +41,13 @@ public class ProjectController {
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<HttpStatus> deleteProject(@PathVariable("id") int id){
+		projectService.deleteProject(id);
 		return new ResponseEntity<HttpStatus>(HttpStatus.OK);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Project> updateProject(@RequestBody Project project){
+	public ResponseEntity<Project> updateProject(@PathVariable("id") int id, @RequestBody Project project){
+		project.setId(id);
 		return new ResponseEntity<Project>(projectService.updateProject(project),HttpStatus.OK);
 	}
 }
