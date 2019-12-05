@@ -12,34 +12,13 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import com.revature.models.Listing;
 import com.revature.models.User;
 
 public class MailService {
 
-	public void sendEmail(User sender, User recipient) {
-//		Properties properties = new Properties();
-//		properties.put("mail.smpt.host", "smtp.gmail.com");
-//		properties.put("mail.smpt.port", "587");
-//		properties.put("mail.smpt.auth", "true");
-//		properties.put("mail.smtp.socketFactory.port", "465");
-//		properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-//		properties.put("mail.smtp.ssl.checkserveridentity", true);
-//
-//		Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
-//			protected PasswordAuthentication getPasswordAuthentication() {
-//				return new PasswordAuthentication("couchforce.hackstr@gmail.com", "revcouch123");
-//			}
-//		});
-//		try {
-//			Message message = new MimeMessage(session);
-//			message.setFrom(new InternetAddress("couchforce.hackstr@gmail.com"));
-//			message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient.getEmail()));
-//			message.setSubject("Someone is interested in your couch!");
-//			message.setText(sender.getName() + " is interested in your couch, feel free to reach them at "+ sender.getEmail()+" or " +sender.getPhoneNumber());
-//			Transport.send(message);
-//		} catch (MessagingException e) {
-//			e.printStackTrace();
-//		}
+	public void sendEmail(User sender, User recipient, Listing listing) {
+
 		 final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
 		 Properties props = new Properties();
 	     props.setProperty("mail.smtp.host", "smtp.gmail.com");
@@ -68,7 +47,7 @@ public class MailService {
 	     msg.setRecipient(Message.RecipientType.TO, 
 	    		 new InternetAddress(recipient.getEmail()));
 	     msg.setSubject("Someone is interested in your couch!");
-	     msg.setText(sender.getName() + " is interested in your couch!\nFeel free to reach out to them at:\n"+sender.getEmail()+"\n"+sender.getPhoneNumber());
+	     msg.setText(sender.getName() + " is interested in " + listing.getAddress()+ "!\nFeel free to reach out to them at:\n"+sender.getEmail()+"\n"+sender.getPhoneNumber());
 	     msg.setSentDate(new Date());
 	     Transport.send(msg);
 	     System.out.println("Message sent.");

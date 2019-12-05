@@ -21,8 +21,8 @@ public class Application implements ApplicationRunner {
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		User carolyn = new User(0, "carolyn.rehm@revature.com", "", 0000000, null);
-		MailService ms = new MailService();
-		ms.sendEmail(carolyn, carolyn);
+//		User carolyn = new User(0, "kevin.tranhuu@revature.com", "", 0000000, null);
+//		MailService ms = new MailService();
+//		ms.sendEmail(carolyn, carolyn, 0);
 	}
 }
