@@ -20,6 +20,7 @@ public class User {
 	private int id;
 	private String name;
 	private String email;
+	//Are we using this?
 	private String password;
 	private int phoneNumber;
 	@OneToOne
