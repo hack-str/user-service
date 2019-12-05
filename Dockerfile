@@ -1,6 +1,6 @@
 FROM nimmis/java-centos:openjdk-8-jdk
 
-ARG JDBC_SCHEMA
+ARG DB_SCHEMA
 ENV DB_SCHEMA=${DB_SCHEMA}
 
 ARG DB_URL
