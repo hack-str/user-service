@@ -1,0 +1,4 @@
+language: java
+
+script:
+  - mvn sonar:sonar -Dsonar.projectKey=user-service -Dsonar.organization=hack-str -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
