@@ -15,3 +15,6 @@ spring:
           lob:
             non_contextual_creation: true
     generate-ddl: true
+feign:
+  hystrix:
+    enabled: true
