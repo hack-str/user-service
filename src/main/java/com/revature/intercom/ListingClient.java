@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.revature.models.Listing;
 
-@FeignClient(name="listing-service",fallback=ListingClientFallback.class)
+@FeignClient(name="listing-service",url="http://localhost:8083",fallback=ListingClientFallback.class)
 public interface ListingClient {
 	
 	@GetMapping("/listings/user/{userId}")
