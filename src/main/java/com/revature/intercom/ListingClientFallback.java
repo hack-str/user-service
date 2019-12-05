@@ -10,7 +10,7 @@ import com.revature.models.Listing;
 import com.revature.services.CachingService;
 
 @Component
-public class ListingClientFallback {
+public class ListingClientFallback implements ListingClient {
 
 	@Autowired
 	private CachingService cachingService;

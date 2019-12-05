@@ -9,7 +9,15 @@ spring:
     password: ${PostgresPW}
     driver-class-name: org.postgresql.Driver
   jpa:
+
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
     generate-ddl: true
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
 feign:
   hystrix:
     enabled: true
+    
