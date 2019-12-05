@@ -18,6 +18,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	private String name;
 	private String email;
 	private String password;
 	private int phoneNumber;
@@ -74,6 +75,12 @@ public class User {
 	public void setListings(List<Listing> listings) {
 		this.listings = listings;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -81,6 +88,7 @@ public class User {
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((listings == null) ? 0 : listings.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + phoneNumber;
 		result = prime * result + ((project == null) ? 0 : project.hashCode());
@@ -107,6 +115,11 @@ public class User {
 				return false;
 		} else if (!listings.equals(other.listings))
 			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
 		if (password == null) {
 			if (other.password != null)
 				return false;
@@ -123,9 +136,10 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", password=" + password + ", phoneNumber=" + phoneNumber
-				+ ", project=" + project + ", listings=" + listings + "]";
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", phoneNumber="
+				+ phoneNumber + ", project=" + project + ", listings=" + listings + "]";
 	}
+	
 	
 	
 	
